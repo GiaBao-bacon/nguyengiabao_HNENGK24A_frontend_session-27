@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý Sinh viên</title>
+  </head>
+  <body>
+    <script>
+      let studentList = [];
+
+      function inputStudentList() {
+        let numStudents = parseInt(prompt("Mời bạn nhập vào số lượng sinh viên"));
+        studentList = [];
+        for (let i = 0; i < numStudents; i++) {
+          let fullName = prompt(
+            "Nhập tên đầy đủ của sinh viên thứ " + (i + 1) + ":"
+          );
+          studentList.push(fullName);
+        }
+        alert("Danh sách sinh viên đã được thêm vào thành công");
+      }
+
+      function displayStudentList() {
+        if (studentList.length === 0) {
+          alert("Danh sách sinh viên rỗng");
+        } else {
+          let studentListString = "Danh sách sinh viên:\n";
+          studentList.forEach((student, index) => {
+            studentListString += index + 1 + ". " + student + "\n";
+          });
+          alert(studentListString);
+        }
+      }
+
+      function findStudentByName() {
+        let searchName = prompt("Nhập tên sinh viên cần tìm:");
+        let found = false;
+        for (let i = 0; i < studentList.length; i++) {
+          if (studentList[i].toLowerCase() === searchName.toLowerCase()) {
+            alert("Sinh viên tìm thấy: " + studentList[i]);
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          alert("Sinh viên không có trong danh sách.");
+        }
+      }
+
+      function deleteStudentByName() {
+        let deleteName = prompt("Nhập tên sinh viên cần xóa:");
+        let found = false;
+        for (let i = 0; i < studentList.length; i++) {
+          if (studentList[i].toLowerCase() === deleteName.toLowerCase()) {
+            studentList.splice(i, 1);
+            alert("Sinh viên " + deleteName + " đã được xóa khỏi danh sách.");
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          alert("Sinh viên không có trong danh sách.");
+        }
+      }
+
+      function showMenu() {
+        let choice;
+        do {
+          choice = prompt(
+            "Chọn một chức năng:\n1. Nhập danh sách sinh viên.\n2. Hiển thị danh sách sinh viên.\n3. Tìm sinh viên theo tên.\n4. Xóa sinh viên.\n5. Thoát."
+          );
+
+          switch (choice) {
+            case "1":
+              inputStudentList();
+              break;
+            case "2":
+              displayStudentList();
+              break;
+            case "3":
+              findStudentByName();
+              break;
+            case "4":
+              deleteStudentByName();
+              break;
+            case "5":
+              alert("Thoát khỏi chương trình.");
+              break;
+            default:
+              alert("Lựa chọn không hợp lệ rồi.Xin vui lòng thử lại.");
+              break;
+          }
+        } while (choice !== "5");
+      }
+
+      showMenu();
+    </script>
+  </body>
+</html>
