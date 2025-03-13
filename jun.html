@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xử lý Số Nguyên</title>
+  </head>
+  <body>
+    <script>
+      function calculateAverage(numbers) {
+        let sum = numbers.reduce((acc, num) => acc + num, 0);
+        return sum / numbers.length;
+      }
+
+      function findLargestEven(numbers) {
+        let evens = numbers.filter((num) => num % 2 === 0);
+        return evens.length > 0 ? Math.max(...evens) : null;
+      }
+
+      function findSmallestOdd(numbers) {
+        let odds = numbers.filter((num) => num % 2 !== 0);
+        return odds.length > 0 ? Math.min(...odds) : null;
+      }
+
+      function showMenu() {
+        let choice;
+        let numbers = [];
+        do {
+          choice = prompt(
+            "Chọn một chức năng:\n1. Nhập danh sách số nguyên.\n2. Tính trung bình các số.\n3. Tìm số chẵn lớn nhất.\n4. Tìm số lẻ nhỏ nhất.\n5. Thoát."
+          );
+
+          switch (choice) {
+            case "1":
+              let input = prompt(
+                "Nhập danh sách số nguyên"
+              );
+              numbers = input.split(",").map((num) => parseInt(num.trim()));
+              break;
+            case "2":
+              if (numbers.length > 0) {
+                alert("Trung bình các số là: " + calculateAverage(numbers));
+              } else {
+                alert("Danh sách số trống.");
+              }
+              break;
+            case "3":
+              let largestEven = findLargestEven(numbers);
+              if (largestEven !== null) {
+                alert("Số chẵn lớn nhất là: " + largestEven);
+              } else {
+                alert("Không có số chẵn trong danh sách.");
+              }
+              break;
+            case "4":
+              let smallestOdd = findSmallestOdd(numbers);
+              if (smallestOdd !== null) {
+                alert("Số lẻ nhỏ nhất là: " + smallestOdd);
+              } else {
+                alert("Không có số lẻ trong danh sách.");
+              }
+              break;
+            case "5":
+              alert("Thoát khỏi chương trình.");
+              break;
+            default:
+              alert("Lựa chọn không hợp lệ. Vui lòng thử lại.");
+              break;
+          }
+        } while (choice !== "5");
+      }
+
+      showMenu();
+    </script>
+  </body>
+</html>
