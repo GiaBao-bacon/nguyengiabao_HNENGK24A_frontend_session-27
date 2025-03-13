@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function add(number1, number2) {
+        return number1 + number2;
+      }
+
+      function subtract(number1, number2) {
+        return number1 - number2;
+      }
+
+      function multiply(number1, number2) {
+        return number1 * number2;
+      }
+
+      function divide(number1, number2) {
+        if (number2 !== 0) {
+          return number1 / number2;
+        } else {
+          alert("Không thể chia được cho 0");
+          return null;
+        }
+      }
+
+      function showMenu() {
+        let chose;
+        do {
+          chose = prompt(
+            "Chọn một phép toán:\n1. Cộng hai số.\n2. Trừ hai số.\n3. Nhân hai số.\n4. Chia hai số.\n5. Thoát."
+          );
+
+          if (chose >= 1 && chose <= 4) {
+            let num1 = parseFloat(prompt("Mời bạn nhập vào số thứ nhất:"));
+            let num2 = parseFloat(prompt("Mời bạn nhập vào số thứ hai:"));
+
+            let result;
+            switch (chose) {
+              case "1":
+                result = add(num1, num2);
+                alert("Kết quả của phép cộng là: " + result);
+                break;
+              case "2":
+                result = subtract(num1, num2);
+                alert("Kết quả của phép trừ là: " + result);
+                break;
+              case "3":
+                result = multiply(num1, num2);
+                alert("Kết quả của phép nhân là: " + result);
+                break;
+              case "4":
+                result = divide(num1, num2);
+                if (result !== null) {
+                  alert("Kết quả phép chia là: " + result);
+                }
+                break;
+            }
+          } else if (chose === "5") {
+            alert("Thoát khỏi chương trình.");
+            break;
+          } else {
+            alert("Lựa chọn này không hợp lệ, vui lòng thử lại.");
+          }
+        } while (chose !== "5");
+      }
+      showMenu();
+    </script>
+  </body>
+</html>
