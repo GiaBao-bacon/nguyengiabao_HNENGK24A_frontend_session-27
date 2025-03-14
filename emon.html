@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tính toán Hình học</title>
+  </head>
+  <body>
+    <script>
+      const pi = 3.14;
+      const roundArea = () => {
+        let r = +prompt("Nhập bán kính");
+        return r * pi;
+      };
+      const circumferenceCircle = () => {
+        let r = +prompt("Nhập bán kính");
+        return r * r * pi;
+      };
+      const rectangularArea = () => {
+        let h = +prompt("Nhập chiều dài");
+        let w = +prompt("Nhập chiều rộng");
+        return h * w;
+      };
+      const rectangular = () => {
+        let h = +prompt("Nhập chiều dài");
+        let w = +prompt("Nhập chiều rộng");
+        return (h + w) * 2;
+      };
+
+      do {
+        choice = +prompt(
+          "1. Tính diện tích hình tròn\n" +
+            "2. Tính chu vi hình tròn\n" +
+            "3. Tính diện tích hình chữ nhật\n" +
+            "4. Tính chu vi hình chữ nhật\n" +
+            "5. Thoát"
+        );
+        switch (choice) {
+          case 1:
+            alert(roundArea());
+            break;
+          case 2:
+            alert(circumferenceCircle());
+            break;
+          case 3:
+            alert(rectangularArea());
+            break;
+          case 4:
+            alert(rectangular());
+            break;
+          case 5:
+            break;
+
+          default:
+            console.log("Không hợp lệ");
+
+            break;
+        }
+      } while (choice !== 5);
+    </script>
+  </body>
+</html>
